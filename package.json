@@ -12,7 +12,7 @@
 
     "start": "node index.js",
 
-    "frontend": "npm start --prefix ./client/build",
+    "frontend": "npm start --prefix ./client",
 
     "backend": "nodemon index.js",
 
