@@ -12,10 +12,10 @@ con()
 app.use(cors({origin:"*"}))
 
 app.use(express.json())
-app.use(express.static(path.join(__dirname,'../social-frontend/build')))
+app.use(express.static(path.join(__dirname,'./build')))
 
 app.get("*",(req,resp)=>{
-    resp.sendFile(path.join('../social-frontend/build/index.html'))
+    resp.sendFile(path.join('./build/index.html'))
 })
 
 
