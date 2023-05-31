@@ -16,7 +16,7 @@
 
     "backend": "nodemon index.js",
 
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    "dev": "concurrently \"npm start\" \"npm run backend\""
 
   },
 
