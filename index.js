@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname,'./client/build')))
 
 app.get("*",(req,resp)=>{
-    resp.sendFile(path.join('.client//build/index.html'))
+    resp.sendFile(__dirname,(path.join('.client//build/index.html')))
 })
 
 
