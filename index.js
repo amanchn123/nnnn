@@ -27,4 +27,4 @@ app.use('/apii',register)
 app.use('/apii',require('./socialMedia-section/routes/postRoutes'))
 
 app.use('/you',require('./socialMedia-section/routes/you'))
-app.listen(5000,console.log('running succesfully'))
+app.listen(5000 || process.env.PORT ,console.log('running succesfully'))
