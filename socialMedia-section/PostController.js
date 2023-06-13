@@ -168,10 +168,7 @@ const storyTimeline=async(req,resp)=>{
         
         {$project:{
           followingStory:1
-        }},
-        
-        
-        
+        }},  
       ])
       
       resp.json({my:mystory,others:stories[0].followingStory})
