@@ -181,33 +181,33 @@ const storyTimeline=async(req,resp)=>{
   }
 }
 
-const youtube=async(req,resp)=>{
-  try{
-    const url=req.body.url;
-    console.log(url)
-    const you= await youtubedl(url, {
-      dumpSingleJson: true,
-      noCheckCertificates: true,
-      noWarnings: true,
-      preferFreeFormats: true,
-      addHeader: [
-        'referer:youtube.com',
-        'user-agent:googlebot'
-      ]
+// const youtube=async(req,resp)=>{
+//   try{
+//     const url=req.body.url;
+//     console.log(url)
+//     const you= await youtubedl(url, {
+//       dumpSingleJson: true,
+//       noCheckCertificates: true,
+//       noWarnings: true,
+//       preferFreeFormats: true,
+//       addHeader: [
+//         'referer:youtube.com',
+//         'user-agent:googlebot'
+//       ]
     
-    })
+//     })
 
-    const main=await you.formats.filter((ele)=>(ele.asr!==null) && (ele.asr) && (ele.video_ext!=='none'))
-    const ql140=await main[0].url
-    const ql360=await main[1].url
-    const ql720=await main[2].url
-    resp.json({ql140:ql140,ql360:ql360,ql720:ql720})
+//     const main=await you.formats.filter((ele)=>(ele.asr!==null) && (ele.asr) && (ele.video_ext!=='none'))
+//     const ql140=await main[0].url
+//     const ql360=await main[1].url
+//     const ql720=await main[2].url
+//     resp.json({ql140:ql140,ql360:ql360,ql720:ql720})
 
     
-  }catch{
-   console.log("youtube errro")
-  }
-}
+//   }catch{
+//    console.log("youtube errro")
+//   }
+// }
  
 
      
