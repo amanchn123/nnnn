@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose');
 const Usermodal = require('./modals/AuthModal');
 const PostModel = require('./modals/PostModal');
 const storyModel=require('./modals/storyModel')
-const youtubedl = require('youtube-dl-exec')
+// const youtubedl = require('youtube-dl-exec')
 
 
 const CreatePost=async(req,resp)=>{
@@ -211,4 +211,4 @@ const storyTimeline=async(req,resp)=>{
  
 
      
-module.exports={CreatePost,getPost,updatePost,deletePost,LikePost,timeLinePost,Createstories,currentUserstory,storyTimeline,youtube}
+module.exports={CreatePost,getPost,updatePost,deletePost,LikePost,timeLinePost,Createstories,currentUserstory,storyTimeline}
