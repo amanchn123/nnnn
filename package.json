@@ -52,9 +52,7 @@
 
     "react-insta-stories": "^2.5.9",
 
-    "youtube-dl-exec": "^2.4.5",
-
-    "ytdl-core": "^4.11.4"
+    "youtube-dl-exec": "^2.4.5"
 
   }
 
