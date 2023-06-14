@@ -2,7 +2,6 @@ const { default: mongoose } = require('mongoose');
 const Usermodal = require('./modals/AuthModal');
 const PostModel = require('./modals/PostModal');
 const storyModel=require('./modals/storyModel')
-const youtubedl = require('youtube-dl-exec')
 
 
 const CreatePost=async(req,resp)=>{
@@ -17,12 +16,10 @@ const CreatePost=async(req,resp)=>{
 }
 
 const getPost=async(req,resp)=>{
-
     try{
        const {userId}=await req.query
-  
-       const getpost=await PostModel.find({userId:userId})
 
+       const getpost=await PostModel.find({userId:userId}).sort({createdAt:-1})
        resp.status(200).json(getpost)   
      
     }catch{
@@ -171,10 +168,7 @@ const storyTimeline=async(req,resp)=>{
         
         {$project:{
           followingStory:1
-        }},
-        
-        
-        
+        }},  
       ])
       
       resp.json({my:mystory,others:stories[0].followingStory})
@@ -185,37 +179,7 @@ const storyTimeline=async(req,resp)=>{
 
   }
 }
-
-// wdnej
-const youtube=async(req,resp)=>{
-  try{
-    const url=req.body.url;
-    console.log(url)
-    const you= await youtubedl(url, {
-      dumpSingleJson: true,
-      noCheckCertificates: true,
-      noWarnings: true,
-      preferFreeFormats: true,
-      addHeader: [
-        'referer:youtube.com',
-        'user-agent:googlebot'
-      ]
-    
-    })
-console.log("hhh")
-
-    const main=await you.formats.filter((ele)=>(ele.asr!==null) && (ele.asr) && (ele.video_ext!=='none'))
-    const ql140=await main[0].url
-    const ql360=await main[1].url
-    const ql720=await main[2].url
-    resp.json({ql140:ql140,ql360:ql360,ql720:ql720})
-
-    
-  }catch{
-   console.log("youtube errro")
-  }
-}
  
 
      
-module.exports={CreatePost,getPost,updatePost,deletePost,LikePost,timeLinePost,Createstories,currentUserstory,storyTimeline,youtube}
+module.exports={CreatePost,getPost,updatePost,deletePost,LikePost,timeLinePost,Createstories,currentUserstory,storyTimeline}
